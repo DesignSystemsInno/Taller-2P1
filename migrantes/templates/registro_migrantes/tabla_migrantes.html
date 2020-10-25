@@ -1,0 +1,84 @@
+{% extends "registro_migrantes/base.html" %}
+
+{% block content %}
+    <!-- <table class="table table-borderless">
+        <thead class="border-bottom font-weight-bold">
+            <tr>
+                <td>Nombre Completo</td>
+                <td>Pais de origen</td>
+                <td>Fecha de migración</td>
+                <td>Edad</td>
+                <td>Documento</td>
+                
+                <td>
+                    <a href="{% url 'insertar_migrantes'%}" class="btn btn-outline-success">
+                        <i class="fas fa-plus"></i> Agregar nuevo
+                    </a>
+                </td>
+            </td>
+        </thead>
+        <tbody>
+            {% for migrante in tabla_migrantes %}
+                <tr>
+                    <td>{{migrante.nombre_completo}}</td>
+                    <td>{{migrante.pais_origen}}</td>
+                    <td>{{migrante.fecha_migracion}}</td>
+                    <td>{{migrante.edad}}</td>
+                    <td>{{migrante.documento}}</td>
+                    <td>
+                        <a href="{% url 'actulizacion_migrante' migrante.id %}" class="btn text-secondary px-0">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <form action="{% url 'eliminar_migrante' migrante.id %}" method="post" class="d-inline">
+                            {% csrf_token %}
+                            <button type="submit" class="btn">
+                                <i class="far fa-trash-alt fa-lg text-danger float-right"></i>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>       -->
+    <section>
+        <div class="container">
+            <td>
+                <a class="btn btn-primary" href="{% url 'insertar_migrantes'%}" role="button">
+              
+                    <i class="fas fa-plus"></i> Agregar nuevo
+                </a>
+            </td>
+            <div class="row">
+            {% for migrante in tabla_migrantes %}
+                <!--Profile Card 3-->
+                <div class="col-md-4">
+                    <div class="card profile-card-3">
+                        <div class="background-block">
+                            
+                            <img src="https://images.pexels.com/photos/459225/pexels-photo-459225.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="profile-sample1" class="background"/>
+                            <div>
+                                <p>{{migrante.edad}} {{migrante.documento}}</p>
+                            </div>
+                        </div>
+                        <div class="profile-thumb-block">
+                            
+                            <img src="https://randomuser.me/api/portraits/men/41.jpg" alt="profile-image" class="profile"/>
+                        </div>
+                        
+                        <div class="card-content">
+                            
+                        <h2>{{migrante.nombre_completo}}<small>{{migrante.pais_origen}}</small></h3>
+                        
+                        <div class="icon-block"><a href=""> <i class="fas fa-edit"></i></a><a href=""><i class="far fa-trash-alt fa-lg text-danger float-right"></i></a></div>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+             {% endfor %}
+                
+              
+            </div>
+        </div>
+    </section>
+{% endblock content %}

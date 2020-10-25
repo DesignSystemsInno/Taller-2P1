@@ -1,0 +1,30 @@
+{% extends "registro_migrantes/base.html" %}
+{% load crispy_forms_tags%}
+{% block content %}
+<form action="" method="post" autocomplete="off">
+    {%csrf_token%}
+   {{formulario.nombre_completo|as_crispy_field}}
+   {{formulario.pais_origen|as_crispy_field}}
+   
+   {{formulario.fecha_migracion|as_crispy_field}}
+
+   <div class="row">
+       <div class="col-md-4">
+            {{formulario.edad|as_crispy_field}}
+       </div>
+       <div class="col-md-8">
+            {{formulario.documento|as_crispy_field}}
+       </div>
+   </div>
+   <div class="row">
+       <div class="col-md-8">
+        <button type="submit" class="btn btn-success btn-block btn-lg"><i class="fas fa-save"> Enviar</i></button>
+       </div>
+        <div class="col-md-4">
+            <a href="{% url 'lista_migrantes' %}" class="btn btn-secondary btn-block btn-lg">
+                <i class="fas fa-stream"></i>Regresar a la lista
+            </a>
+        </div>
+    </div>
+</form>
+{% endblock content %}
